@@ -80,7 +80,7 @@ const PokemonId = () => {
           <ul className='list-stats'>
             {
               pokemon?.stats.map((stat) => (
-                <li key={pokemon?.id}>
+                <li key={stat.stat.name}>
                   <div>
                   <h4>{stat.stat.name}:</h4>
                   <h4>{stat.base_stat}/150</h4>

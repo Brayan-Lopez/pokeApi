@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Baner from '../components/pokedex/Baner'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
@@ -13,6 +13,7 @@ const Pokedex = () => {
   const [types, setTypes] = useState([])
   const [currentType, setCurrentType] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
+  const input = useRef(null)
 
   const nameTrainer = useSelector((store) => store.nameTrainer)
 
@@ -111,6 +112,11 @@ const Pokedex = () => {
     setCurrentPage(1)
   }, [pokemonName, currentType])
   
+  useEffect(() => {
+    setPokemonName("")
+    input.current.value = ""
+  }, [currentType])
+  
 
   return (
     <section className='component'>
@@ -125,7 +131,7 @@ const Pokedex = () => {
 
           <form onSubmit={handleSubmit}>
             <div>
-              <input id='namePokemon' type="text" placeholder='Search Pokémon'/>
+              <input ref={input} id='namePokemon' type="text" placeholder='Search Pokémon'/>
               <button>Search</button>
             </div>
             <select onChange={(e) => setCurrentType(e.target.value)}>
