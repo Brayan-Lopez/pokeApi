@@ -239,7 +239,7 @@
 }
 /***** listado de paginas *****/
 .list-pages{
-  margin: 2rem 1rem;
+  margin: 2rem 0;
   font-size: 1.2rem;
   font-weight: 500;
   color: #272727;
